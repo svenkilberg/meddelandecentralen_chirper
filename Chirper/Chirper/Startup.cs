@@ -1,4 +1,5 @@
 using Chirper.Data.Repositories;
+using Chirper.Hubs;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
@@ -21,6 +22,8 @@ namespace Chirper
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<IChirpRepository, ChirpRepository>();
+
+            services.AddSignalR();
 
             services.AddControllersWithViews();
 
@@ -53,6 +56,7 @@ namespace Chirper
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller}/{action=Index}/{id?}");
+                endpoints.MapHub<ChirpHub>("/chirpHub");
             });
 
             app.UseSpa(spa =>
