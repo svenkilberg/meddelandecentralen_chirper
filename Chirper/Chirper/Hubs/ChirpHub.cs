@@ -16,12 +16,14 @@ namespace Chirper.Hubs
         {
             _chirpRepository = chirpRepository;
         }
-        public async Task SendAllChirps()
+        public async Task SendMessage(IEnumerable<Chirp> allChirps)
         {
             //var allChirps = _chirpRepository.AllChirps;
-            var allChirps = "Test message";
+            //var allChirps = "Test message";
 
             await Clients.All.SendAsync("RecieveAllChirps", allChirps);
         }
+
+       
     }
 }

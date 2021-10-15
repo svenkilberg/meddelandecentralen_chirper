@@ -4,7 +4,7 @@ import { Layout } from './components/Layout';
 import { Home } from './components/Home';
 import { FetchData } from './components/FetchData';
 import { Counter } from './components/Counter';
-import { startRealtimeConnection } from './chirpsRealtimeAndApi/connection/startConnection.js';
+
 
 import './custom.css'
 
@@ -14,7 +14,7 @@ export default class App extends Component {
     
 
     render() {
-        startRealtimeConnection();
+        
     return (
       <Layout>
         <Route exact path='/' component={Home} />
