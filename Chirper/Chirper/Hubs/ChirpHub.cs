@@ -24,6 +24,11 @@ namespace Chirper.Hubs
             await Clients.All.SendAsync("RecieveAllChirps", allChirps);
         }
 
+        public override async Task OnConnectedAsync()
+        {
+            await SendMessage(_chirpRepository.AllChirps);
+        }
+
        
     }
 }

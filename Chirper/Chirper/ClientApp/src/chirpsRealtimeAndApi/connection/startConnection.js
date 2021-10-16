@@ -11,7 +11,7 @@ export async function startRealtimeConnection() {
 
     connection.on("RecieveAllChirps", (allChirps) => {
         console.log("In connection on");
-        console.log("All chirps " + JSON.stringify(allChirps[0]));
+        console.log("All chirps " + JSON.stringify(allChirps));
     });    
 
     connection
