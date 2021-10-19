@@ -1,12 +1,7 @@
 import React, { Component } from 'react';
-import { startRealtimeConnection } from '../chirpsRealtimeAndApi/connection/startConnection.js';
 
 export class Home extends Component {
-    static displayName = Home.name;
-
-    componentDidMount() {
-        startRealtimeConnection();
-    }
+    static displayName = Home.name;    
 
   render () {
     return (
