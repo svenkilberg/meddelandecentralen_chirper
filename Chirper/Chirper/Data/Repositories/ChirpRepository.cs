@@ -28,6 +28,13 @@ namespace Chirper.Data.Repositories
                     UserName = "Bertil",
                     Message = "Gästen på rum 301 vill ha sina ägg löskokta.",
                     Date = System.DateTime.Now
+                },
+                new Chirp
+                {
+                    Id = 4,
+                    UserName = "Lennart",
+                    Message = "Fyll på mer is i baren.",
+                    Date = System.DateTime.Now
                 }
             };
     }
