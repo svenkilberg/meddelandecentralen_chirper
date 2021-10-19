@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Chirp } from './Chirp';
 import * as signalR from "@microsoft/signalr/dist/browser/signalr.js";
 
 export class Home extends Component {
@@ -28,15 +29,11 @@ export class Home extends Component {
             .catch(err => console.log('Error while establishing connection :('));
     }
 
-    renderTableData() {
+    renderChirp() {
         return this.state.chirps.map((chirp) => {
             const { id, userName, message, date } = chirp //destructuring
             return (
-                <tr key={id}>
-                    <td>{userName}</td>
-                    <td>{message}</td>
-                    <td>{date}</td>
-                </tr>
+                <Chirp userName={userName} message={message} date={date}/>
             )
         })
     }
@@ -46,12 +43,13 @@ export class Home extends Component {
     return (
       <div>
         <div>
-        <h1>Concorde Chirper</h1>        
+                <h1>Concorde Chirper</h1>
+                <button type="button" class="btn btn-secondary">Nytt Chirp</button>
         </div>
         <div>
                 <table className="table" id='students'>
                     <tbody>
-                        {this.renderTableData()}
+                        {this.renderChirp()}
                     </tbody>
                 </table>
         </div>
