@@ -8,16 +8,16 @@ export class Chirp extends Component {
     render() {
 
         return (
-            <div class="card text-center mt-4 mb-4">
-                <div class="card-header">
+            <div key={ this.props.id.toString()} className="card text-center mt-4 mb-4">
+                <div className="card-header">
                     Användare: {this.props.userName}<br/> Tid: {this.props.date}
                 </div>
-                <div class="card-body">                    
-                    <p class="card-text">{this.props.message}</p>
+                <div className="card-body">                    
+                    <p className="card-text">{this.props.message}</p>
                 </div>
-                <div class="card-footer text-muted">
-                    <span class="badge badge-pill badge-secondary mr-4">Edit</span>
-                    <span class="badge badge-pill badge-danger">Delete</span>
+                <div className="card-footer text-muted">
+                    <span className="badge badge-pill badge-secondary mr-4">Edit</span>
+                    <span className="badge badge-pill badge-danger">Delete</span>
                 </div>
             </div>
         );

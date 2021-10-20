@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { NewChirpForm } from './NewChirpForm';
 import { Chirp } from './Chirp';
 import * as signalR from "@microsoft/signalr/dist/browser/signalr.js";
 
@@ -33,7 +34,7 @@ export class Home extends Component {
         return this.state.chirps.map((chirp) => {
             const { id, userName, message, date } = chirp //destructuring
             return (
-                <Chirp userName={userName} message={message} date={date}/>
+                <Chirp id={id} userName={userName} message={message} date={date}/>
             )
         })
     }
@@ -44,14 +45,11 @@ export class Home extends Component {
       <div>
         <div>
                 <h1>Concorde Chirper</h1>
-                <button type="button" class="btn btn-secondary">Nytt Chirp</button>
+                <NewChirpForm/>
+                
         </div>
-        <div>
-                <table className="table" id='students'>
-                    <tbody>
-                        {this.renderChirp()}
-                    </tbody>
-                </table>
+        <div>                
+                {this.renderChirp()}                    
         </div>
       </div>
     );
