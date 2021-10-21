@@ -10,7 +10,7 @@ export class Chirp extends Component {
         return (
             <div key={ this.props.id.toString()} className="card text-center mt-4 mb-4">
                 <div className="card-header">
-                    Användare: {this.props.userName}<br/> Tid: {this.props.date}
+                    Användare: {this.props.userName}<br/> Tid: {this.props.time}
                 </div>
                 <div className="card-body">                    
                     <p className="card-text">{this.props.message}</p>

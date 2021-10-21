@@ -18,8 +18,9 @@ export class NewChirpForm extends Component {
     }
 
     handleSubmit(event) {
-        alert('A name was submitted: ' + this.state.userNameInput + ' and a message ' + this.state.messageInput);
+        //alert('A name was submitted: ' + this.state.userNameInput + ' and a message ' + this.state.messageInput);
         event.preventDefault();
+        this.props.createNewChirp(this.state.userNameInput, this.state.messageInput);
         this.setState({ userNameInput: '' });
         this.setState({ messageInput: '' });
     }

@@ -14,13 +14,14 @@ export class Home extends Component {
                 .configureLogging(signalR.LogLevel.Information)
                 .build(),
         };
+        this.createNewChirp = this.createNewChirp.bind(this);
     }
     static displayName = Home.name;
 
     componentDidMount = () => {        
 
         this.state.hubConnection.on('RecieveAllChirps', (allChirps) => {
-            
+            console.log('In RecieveAllChirps ' + JSON.stringify(allChirps));
             this.setState({ chirps: allChirps });
         });
 
@@ -31,12 +32,21 @@ export class Home extends Component {
     }
 
     renderChirp() {
+        
         return this.state.chirps.map((chirp) => {
-            const { id, userName, message, date } = chirp //destructuring
+            const { id, userName, message, time } = chirp //destructuring
             return (
-                <Chirp id={id} userName={userName} message={message} date={date}/>
+                <Chirp id={id} userName={userName} message={message} time={time}/>
             )
         })
+        
+    }
+
+    createNewChirp(userName, message) {
+        //alert('In createNewChirp function: ' + userName + ' and a message ' + message);
+        this.state.hubConnection.invoke("CreateNewChirp", userName, message).catch(function (err) {
+            console.log(err.toString());
+        });
     }
 
     render() {
@@ -45,7 +55,7 @@ export class Home extends Component {
       <div>
         <div>
                 <h1>Concorde Chirper</h1>
-                <NewChirpForm/>
+                <NewChirpForm createNewChirp={this.createNewChirp }/>
                 
         </div>
         <div>                

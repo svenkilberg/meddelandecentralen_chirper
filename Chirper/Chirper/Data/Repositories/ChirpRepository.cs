@@ -1,41 +1,31 @@
 ﻿using Chirper.Entities;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Chirper.Data.Repositories
 {
     public class ChirpRepository : IChirpRepository
     {
-        public IEnumerable<Chirp> AllChirps =>
-            new List<Chirp>
+        public List<Chirp> GetAllChirps()
+        {
+            return Program.AllChirps;
+        }
+
+        
+
+        public void CreateNewChirp(string userName, string message)
+        {
             {
-                new Chirp
+                Program.AllChirps.Add(new Chirp
                 {
-                    Id = 1,
-                    UserName = "Kalle",
-                    Message = "Rengör polen.",
-                    Date = System.DateTime.Now
-                },
-                new Chirp
-                {
-                    Id = 2,
-                    UserName = "Kalle",
-                    Message = "Lägg dit rena handdukar.",
-                    Date = System.DateTime.Now
-                },
-                new Chirp
-                {
-                    Id = 3,
-                    UserName = "Bertil",
-                    Message = "Gästen på rum 301 vill ha sina ägg löskokta.",
-                    Date = System.DateTime.Now
-                },
-                new Chirp
-                {
-                    Id = 4,
-                    UserName = "Lennart",
-                    Message = "Fyll på mer is i baren.",
-                    Date = System.DateTime.Now
-                }
-            };
+                    Id = Program.AllChirps.Count + 1,
+                    UserName = userName,
+                    Message = message,
+                    Time = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")
+                });
+            }           
+            
+        }
     }
 }
