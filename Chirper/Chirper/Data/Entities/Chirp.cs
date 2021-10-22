@@ -10,7 +10,7 @@ namespace Chirper.Entities
         public int Id { get; set; }
         public string UserName { get; set; }
         public string Message { get; set; }
-        public DateTime Date { get; set; }
-        public List<PipeTag> PipeTags = new List<PipeTag>(); 
+        public string Time { get; set; }
+        public string PipeTag { get; set; }
     }
 }

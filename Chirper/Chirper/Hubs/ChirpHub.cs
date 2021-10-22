@@ -16,7 +16,7 @@ namespace Chirper.Hubs
         {
             _chirpRepository = chirpRepository;
         }
-        public async Task SendMessage(IEnumerable<Chirp> allChirps)
+        public async Task SendMessage(List<Chirp> allChirps)
         {
             //var allChirps = _chirpRepository.AllChirps;
             //var allChirps = "Test message";
@@ -24,9 +24,17 @@ namespace Chirper.Hubs
             await Clients.All.SendAsync("RecieveAllChirps", allChirps);
         }
 
+        public async Task CreateNewChirp(string userName, string message, string pipeTag)
+        {
+            Console.WriteLine("In CreateNewChirp hub");
+            _chirpRepository.CreateNewChirp(userName, message, pipeTag);
+
+            await SendMessage(_chirpRepository.GetAllChirps());
+        }
+
         public override async Task OnConnectedAsync()
         {
-            await SendMessage(_chirpRepository.AllChirps);
+            await SendMessage(_chirpRepository.GetAllChirps());
         }
 
        
