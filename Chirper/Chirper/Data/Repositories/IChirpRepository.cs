@@ -8,7 +8,7 @@ namespace Chirper.Data.Repositories
 {
     public interface IChirpRepository
     {
-        public void CreateNewChirp(string userName, string message);
+        public void CreateNewChirp(string userName, string message, string pipeTag);
 
         public List<Chirp> GetAllChirps();
     }

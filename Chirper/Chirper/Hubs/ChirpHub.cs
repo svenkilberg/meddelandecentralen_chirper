@@ -24,10 +24,10 @@ namespace Chirper.Hubs
             await Clients.All.SendAsync("RecieveAllChirps", allChirps);
         }
 
-        public async Task CreateNewChirp(string userName, string message)
+        public async Task CreateNewChirp(string userName, string message, string pipeTag)
         {
             Console.WriteLine("In CreateNewChirp hub");
-            _chirpRepository.CreateNewChirp(userName, message);
+            _chirpRepository.CreateNewChirp(userName, message, pipeTag);
 
             await SendMessage(_chirpRepository.GetAllChirps());
         }

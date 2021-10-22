@@ -34,17 +34,17 @@ export class Home extends Component {
     renderChirp() {
         
         return this.state.chirps.map((chirp) => {
-            const { id, userName, message, time } = chirp //destructuring
+            const { id, userName, message, time, pipeTag } = chirp //destructuring
             return (
-                <Chirp id={id} userName={userName} message={message} time={time}/>
+                <Chirp id={id} userName={userName} message={message} time={time} pipeTag={pipeTag}/>
             )
         })
         
     }
 
-    createNewChirp(userName, message) {
+    createNewChirp(userName, message, pipeTag) {
         //alert('In createNewChirp function: ' + userName + ' and a message ' + message);
-        this.state.hubConnection.invoke("CreateNewChirp", userName, message).catch(function (err) {
+        this.state.hubConnection.invoke("CreateNewChirp", userName, message, pipeTag).catch(function (err) {
             console.log(err.toString());
         });
     }

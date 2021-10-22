@@ -6,6 +6,7 @@ export class NewChirpForm extends Component {
         this.state = {
             userNameInput: '',
             messageInput: '',
+            pipeTagInput: '',
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -20,9 +21,10 @@ export class NewChirpForm extends Component {
     handleSubmit(event) {
         //alert('A name was submitted: ' + this.state.userNameInput + ' and a message ' + this.state.messageInput);
         event.preventDefault();
-        this.props.createNewChirp(this.state.userNameInput, this.state.messageInput);
+        this.props.createNewChirp(this.state.userNameInput, this.state.messageInput, this.state.pipeTagInput);
         this.setState({ userNameInput: '' });
         this.setState({ messageInput: '' });
+        this.setState({ pipeTagInput: '' });
     }
 
     render() {
@@ -51,6 +53,17 @@ export class NewChirpForm extends Component {
                         value={this.state.messageInput}
                         onChange={this.handleChange}
                 ></input>
+                </div>
+                <div className="form-group">
+                    <label className="label">|Tag</label>
+                    <input
+                        type="text"
+                        name="pipeTagInput"
+                        className="form-control"
+                        id="pipeTagInput"
+                        value={this.state.pipeTagInput}
+                        onChange={this.handleChange}
+                    ></input>
                 </div>
                 <button type="submit" className="btn btn-secondary" onClick={(event => this.handleSubmit(event))}>Nytt Chirp</button>
             </form>

@@ -11,6 +11,6 @@ namespace Chirper.Entities
         public string UserName { get; set; }
         public string Message { get; set; }
         public string Time { get; set; }
-        public List<PipeTag> PipeTags = new List<PipeTag>(); 
+        public string PipeTag { get; set; }
     }
 }

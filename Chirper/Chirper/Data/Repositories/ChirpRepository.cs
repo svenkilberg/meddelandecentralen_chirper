@@ -14,17 +14,19 @@ namespace Chirper.Data.Repositories
 
         
 
-        public void CreateNewChirp(string userName, string message)
+        public void CreateNewChirp(string userName, string message, string pipeTag)
         {
+            var maxId = Program.AllChirps.Max(chirp => chirp.Id);
+            
+            Program.AllChirps.Add(new Chirp
             {
-                Program.AllChirps.Add(new Chirp
-                {
-                    Id = Program.AllChirps.Count + 1,
-                    UserName = userName,
-                    Message = message,
-                    Time = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")
-                });
-            }           
+                Id = maxId + 1,
+                UserName = userName,
+                Message = message,
+                Time = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
+                PipeTag = pipeTag,
+            });
+                      
             
         }
     }
