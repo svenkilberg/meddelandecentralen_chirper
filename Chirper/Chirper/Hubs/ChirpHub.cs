@@ -35,7 +35,7 @@ namespace Chirper.Hubs
         public async Task DeleteChirp(int id)
         {
             Console.WriteLine("In DeleteChirp hub " + id);
-            //_chirpRepository.CreateNewChirp(userName, message, pipeTag);
+            _chirpRepository.DeleteChirp(id);
 
             await SendMessage(_chirpRepository.GetAllChirps());
         }
