@@ -2,8 +2,14 @@
 
 export class Chirp extends Component {
     constructor(props) {
-        super(props);        
-    }    
+        super(props);
+
+        this.handleDeleteClick = this.handleDeleteClick.bind(this);
+    }
+
+    handleDeleteClick(id) {        
+        this.props.deleteChirp(id);
+    }
 
     render() {
 
@@ -20,7 +26,7 @@ export class Chirp extends Component {
                 </div>
                 <div className="card-footer text-muted">
                     <span className="badge badge-pill badge-secondary mr-4">Edit</span>
-                    <span className="badge badge-pill badge-danger chirpButtons">Delete</span>
+                    <span className="badge badge-pill badge-danger chirpButtons" onClick={(() => this.handleDeleteClick(this.props.id))}>Delete</span>
                 </div>
             </div>
         );
