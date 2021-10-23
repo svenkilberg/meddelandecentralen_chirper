@@ -12,3 +12,8 @@ code {
   background-color: #1b6ec2;
   border-color: #1861ac;
 }
+
+.chirpButtons:hover {
+    cursor: pointer;
+    background-color: rgb(220,53,69,0.5)
+}

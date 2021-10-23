@@ -20,7 +20,7 @@ export class Chirp extends Component {
                 </div>
                 <div className="card-footer text-muted">
                     <span className="badge badge-pill badge-secondary mr-4">Edit</span>
-                    <span className="badge badge-pill badge-danger">Delete</span>
+                    <span className="badge badge-pill badge-danger chirpButtons">Delete</span>
                 </div>
             </div>
         );
