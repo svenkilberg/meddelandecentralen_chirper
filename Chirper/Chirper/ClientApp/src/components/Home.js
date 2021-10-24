@@ -16,6 +16,7 @@ export class Home extends Component {
         };
         this.createNewChirp = this.createNewChirp.bind(this);
         this.deleteChirp = this.deleteChirp.bind(this);
+        this.editChirp = this.editChirp.bind(this);
     }
     static displayName = Home.name;
 
@@ -37,7 +38,7 @@ export class Home extends Component {
         return this.state.chirps.map((chirp) => {
             const { id, userName, message, time, pipeTag } = chirp //destructuring
             return (
-                <Chirp id={id} userName={userName} message={message} time={time} pipeTag={pipeTag} deleteChirp={this.deleteChirp}/>
+                <Chirp id={id} userName={userName} message={message} time={time} pipeTag={pipeTag} deleteChirp={this.deleteChirp} editChirp={this.editChirp}/>
             )
         })
         
@@ -52,6 +53,12 @@ export class Home extends Component {
 
     deleteChirp(id) {
         this.state.hubConnection.invoke("DeleteChirp", id).catch(function (err) {
+            console.log(err.toString());
+        });
+    }
+
+    editChirp(id, userName, message, pipeTag) {
+        this.state.hubConnection.invoke("EditChirp", id, userName, message, pipeTag).catch(function (err) {
             console.log(err.toString());
         });
     }

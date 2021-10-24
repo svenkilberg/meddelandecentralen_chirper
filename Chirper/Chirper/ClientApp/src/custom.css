@@ -15,5 +15,5 @@ code {
 
 .chirpButtons:hover {
     cursor: pointer;
-    background-color: rgb(220,53,69,0.5)
+    opacity: 0.5;
 }
