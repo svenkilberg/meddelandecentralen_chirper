@@ -29,5 +29,10 @@ namespace Chirper.Data.Repositories
                       
             
         }
+
+        public void DeleteChirp(int id)
+        {
+            Program.AllChirps.RemoveAll(chirp => chirp.Id == id);
+        }
     }
 }
