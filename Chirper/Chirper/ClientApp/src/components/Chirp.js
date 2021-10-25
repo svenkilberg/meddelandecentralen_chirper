@@ -11,6 +11,7 @@ export class Chirp extends Component {
         };
         this.handleDeleteClick = this.handleDeleteClick.bind(this);
         this.handleEditActiveClick = this.handleEditActiveClick.bind(this);
+        this.clearStateInputFields = this.clearStateInputFields.bind(this);
         this.handleEditNotActiveClick = this.handleEditNotActiveClick.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -27,10 +28,14 @@ export class Chirp extends Component {
         this.setState({ editActive: true });
     }
 
-    handleEditNotActiveClick() {
+    clearStateInputFields() {
         this.setState({ editUserNameInput: '' });
         this.setState({ editMessageInput: '' });
         this.setState({ editPipeTagInput: '' });
+    }
+
+    handleEditNotActiveClick() {
+        this.clearStateInputFields();
         this.setState({ editActive: false });
     }
 
@@ -41,12 +46,9 @@ export class Chirp extends Component {
     }
 
     handleSubmit(event, id) {
-        //alert('A name was submitted: ' + this.state.userNameInput + ' and a message ' + this.state.messageInput);
         event.preventDefault();
         this.props.editChirp(id, this.state.editUserNameInput, this.state.editMessageInput, this.state.editPipeTagInput);
-        this.setState({ editUserNameInput: '' });
-        this.setState({ editMessageInput: '' });
-        this.setState({ editPipeTagInput: '' });
+        this.clearStateInputFields();
         this.setState({ editActive: false });
     }
 
