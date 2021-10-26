@@ -1,4 +1,5 @@
 ﻿import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 export class Chirp extends Component {
     constructor(props) {
@@ -103,7 +104,7 @@ export class Chirp extends Component {
         }
 
         return (
-            <div key={ this.props.id.toString()} className="card text-center mt-4 mb-4">
+            <div className="card text-center mt-4 mb-4">
                 <div className="card-header">
                     Användare: {this.props.userName}<br />
                     Tid: {this.props.time}<br />
@@ -111,7 +112,7 @@ export class Chirp extends Component {
                 </div>
                 <div className="card-body">                    
                     <p className="card-text">{this.props.message}</p>
-                    <p className="card-text text-info">|{this.props.pipeTag}</p>
+                    <p className="card-text text-info">|<Link to={`/pipetag/${this.props.pipeTag}`}>{this.props.pipeTag}</Link></p>
                 </div>
                 <div className="card-footer text-muted">
                     <span className="badge badge-pill badge-secondary mr-4 chirpButtons" onClick={(() => this.handleEditActiveClick())}>Edit</span>
