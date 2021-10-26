@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { NewChirpForm } from './NewChirpForm';
-import { Chirp } from './Chirp';
 import * as signalR from "@microsoft/signalr/dist/browser/signalr.js";
+import { Chirp } from './Chirp';
+import { NewChirpForm } from './NewChirpForm';
 
 export class Home extends Component {
     constructor(props) {
@@ -14,11 +14,12 @@ export class Home extends Component {
                 .configureLogging(signalR.LogLevel.Information)
                 .build(),
         };
+
         this.createNewChirp = this.createNewChirp.bind(this);
         this.deleteChirp = this.deleteChirp.bind(this);
         this.editChirp = this.editChirp.bind(this);
-    }
-    static displayName = Home.name;
+        
+    }    
 
     componentDidMount = () => {        
 
@@ -33,12 +34,17 @@ export class Home extends Component {
             .catch(err => console.log('Error while establishing connection :('));
     }
 
+    componentWillUnmount = () => {
+        this.state.hubConnection
+            .stop();
+    }
+
     renderChirp() {
         
         return this.state.chirps.map((chirp) => {
             const { id, userName, message, time, pipeTag } = chirp //destructuring
             return (
-                <Chirp id={id} userName={userName} message={message} time={time} pipeTag={pipeTag} deleteChirp={this.deleteChirp} editChirp={this.editChirp}/>
+                <Chirp key={id.toString() } id={id} userName={userName} message={message} time={time} pipeTag={pipeTag} deleteChirp={this.deleteChirp} editChirp={this.editChirp}/>
             )
         })
         
@@ -48,7 +54,7 @@ export class Home extends Component {
         //alert('In createNewChirp function: ' + userName + ' and a message ' + message);
         this.state.hubConnection.invoke("CreateNewChirp", userName, message, pipeTag).catch(function (err) {
             console.log(err.toString());
-        });
+        });        
     }
 
     deleteChirp(id) {
