@@ -13,5 +13,7 @@ namespace Chirper.Data.Repositories
         public void CreateNewChirp(string userName, string message, string pipeTag);
 
         public void DeleteChirp(int id);
+
+        public void EditChirp(int id, string userName, string message, string pipeTag);
     }
 }

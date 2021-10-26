@@ -40,6 +40,14 @@ namespace Chirper.Hubs
             await SendMessage(_chirpRepository.GetAllChirps());
         }
 
+        public async Task EditChirp(int id, string userName, string message, string pipeTag)
+        {
+            Console.WriteLine("In EditChirp hub " + id);
+            _chirpRepository.EditChirp(id, userName, message, pipeTag);
+
+            await SendMessage(_chirpRepository.GetAllChirps());
+        }
+
         public override async Task OnConnectedAsync()
         {
             await SendMessage(_chirpRepository.GetAllChirps());

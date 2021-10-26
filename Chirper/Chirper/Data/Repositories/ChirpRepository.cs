@@ -34,5 +34,17 @@ namespace Chirper.Data.Repositories
         {
             Program.AllChirps.RemoveAll(chirp => chirp.Id == id);
         }
+
+        public void EditChirp(int id, string userName, string message, string pipeTag)
+        {
+            var obj = Program.AllChirps.SingleOrDefault(x => x.Id == id);
+
+            if (obj != null)
+            {
+                obj.UserName = userName;
+                obj.Message = message;
+                obj.PipeTag = pipeTag;                
+            }
+        }
     }
 }
