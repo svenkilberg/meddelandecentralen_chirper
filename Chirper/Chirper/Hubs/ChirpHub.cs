@@ -16,12 +16,12 @@ namespace Chirper.Hubs
         {
             _chirpRepository = chirpRepository;
         }
-        public async Task SendMessage(List<Chirp> allChirps)
+        public async Task SendMessage()
         {
             //var allChirps = _chirpRepository.AllChirps;
             //var allChirps = "Test message";
 
-            await Clients.All.SendAsync("RecieveAllChirps", allChirps);
+            await Clients.All.SendAsync("RecieveAllChirps", _chirpRepository.GetAllChirps());
         }
 
         public async Task CreateNewChirp(string userName, string message, string pipeTag)
@@ -29,7 +29,7 @@ namespace Chirper.Hubs
             Console.WriteLine("In CreateNewChirp hub");
             _chirpRepository.CreateNewChirp(userName, message, pipeTag);
 
-            await SendMessage(_chirpRepository.GetAllChirps());
+            await SendMessage();
         }
 
         public async Task DeleteChirp(int id)
@@ -37,7 +37,7 @@ namespace Chirper.Hubs
             Console.WriteLine("In DeleteChirp hub " + id);
             _chirpRepository.DeleteChirp(id);
 
-            await SendMessage(_chirpRepository.GetAllChirps());
+            await SendMessage();
         }
 
         public async Task EditChirp(int id, string userName, string message, string pipeTag)
@@ -45,12 +45,12 @@ namespace Chirper.Hubs
             Console.WriteLine("In EditChirp hub " + id);
             _chirpRepository.EditChirp(id, userName, message, pipeTag);
 
-            await SendMessage(_chirpRepository.GetAllChirps());
+            await SendMessage();
         }
 
         public override async Task OnConnectedAsync()
         {
-            await SendMessage(_chirpRepository.GetAllChirps());
+            await SendMessage();
         }
 
        

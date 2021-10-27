@@ -76,7 +76,8 @@ export class PipeTagView extends Component {
       <div>
         <div>
                 <h1>Concorde Chirper</h1>
-                <Link to={'/'}>Alla Chirps</Link>
+                <p>Vy med vald |Tag</p>
+                <Link to={'/'}>G&aring; till alla Chirps</Link>
                 
         </div>
         <div>                

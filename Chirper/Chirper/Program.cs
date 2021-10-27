@@ -13,7 +13,7 @@ namespace Chirper
 {
     public class Program
     {
-        public static List<Chirp> AllChirps = new List<Chirp>()
+        public static List<Chirp> AllChirps = new List<Chirp>
             {
                 new Chirp
                 {
