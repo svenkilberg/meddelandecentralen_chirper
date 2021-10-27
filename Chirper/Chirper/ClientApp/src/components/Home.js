@@ -11,7 +11,7 @@ export class Home extends Component {
             chirps: [],
             hubConnection: new signalR.HubConnectionBuilder()
                 .withUrl("/chirpHub")
-                .configureLogging(signalR.LogLevel.Information)
+                .configureLogging(signalR.LogLevel.Trace)
                 .build(),
         };
 
@@ -37,21 +37,9 @@ export class Home extends Component {
     componentWillUnmount = () => {
         this.state.hubConnection
             .stop();
-    }
+    }    
 
-    renderChirp() {
-        
-        return this.state.chirps.map((chirp) => {
-            const { id, userName, message, time, pipeTag } = chirp //destructuring
-            return (
-                <Chirp key={id.toString() } id={id} userName={userName} message={message} time={time} pipeTag={pipeTag} deleteChirp={this.deleteChirp} editChirp={this.editChirp}/>
-            )
-        })
-        
-    }
-
-    createNewChirp(userName, message, pipeTag) {
-        //alert('In createNewChirp function: ' + userName + ' and a message ' + message);
+    createNewChirp(userName, message, pipeTag) {        
         this.state.hubConnection.invoke("CreateNewChirp", userName, message, pipeTag).catch(function (err) {
             console.log(err.toString());
         });        
@@ -70,7 +58,20 @@ export class Home extends Component {
     }
 
     render() {
-        
+        const chirpsList = this.state.chirps;
+
+        const renderChirp = chirpsList.map((chirp) => (
+            <Chirp
+                key={chirp.id}
+                id={chirp.id}
+                userName={chirp.userName}
+                message={chirp.message}
+                time={chirp.time}
+                pipeTag={chirp.pipeTag}
+                deleteChirp={this.deleteChirp}
+                editChirp={this.editChirp}
+            />
+        ));
     return (
       <div>
         <div>
@@ -79,7 +80,7 @@ export class Home extends Component {
                 
         </div>
         <div>                
-                {this.renderChirp()}                    
+                {renderChirp}                    
         </div>
       </div>
     );
