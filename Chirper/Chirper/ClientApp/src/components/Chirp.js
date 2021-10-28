@@ -105,16 +105,15 @@ export class Chirp extends Component {
 
         return (
             <div className="card text-center mt-4 mb-4">
-                <div className="card-header">
+                <div className="card-header lead">
                     Användare: {this.props.userName}<br />
-                    Tid: {this.props.time}<br />
-                    Id: {this.props.id.toString()}<br />
+                    Tid: {this.props.time}<br />                    
                 </div>
-                <div className="card-body">                    
+                <div className="card-body lead">                    
                     <p className="card-text">{this.props.message}</p>
                     <p className="card-text text-info">|<Link to={`/pipetag/${this.props.pipeTag}`}>{this.props.pipeTag}</Link></p>
                 </div>
-                <div className="card-footer text-muted">
+                <div className="card-footer text-muted lead">
                     <span className="badge badge-pill badge-secondary mr-4 chirpButtons" onClick={(() => this.handleEditActiveClick())}>Edit</span>
                     <span className="badge badge-pill badge-danger chirpButtons" onClick={(() => this.handleDeleteClick(this.props.id))}>Delete</span>
                 </div>

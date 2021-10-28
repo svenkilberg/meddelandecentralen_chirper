@@ -50,16 +50,15 @@ export class PipeTagView extends Component {
             const { id, userName, message, time, pipeTag } = chirp //destructuring
             return (
                 <div key={id.toString()} className="card text-center mt-4 mb-4">
-                    <div className="card-header">
+                    <div className="card-header lead">
                         Anv&auml;ndare: {userName}<br />
-                        Tid: {time}<br />
-                        Id: {id.toString()}<br />
+                        Tid: {time}<br />                        
                     </div>
-                    <div className="card-body">
+                    <div className="card-body lead">
                         <p className="card-text">{message}</p>
                         <p className="card-text text-info">|{pipeTag}</p>
                     </div>
-                    <div className="card-footer text-muted">
+                    <div className="card-footer text-muted lead">
                         
                     </div>
 
