@@ -18,8 +18,10 @@ export class Chirp extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    handleDeleteClick(id) {        
-        this.props.deleteChirp(id);
+    handleDeleteClick(id) {
+        if (window.confirm('Vill du verkligen ta bort detta Chirp?')) {
+            this.props.deleteChirp(id);
+        }
     }
 
     handleEditActiveClick() {
