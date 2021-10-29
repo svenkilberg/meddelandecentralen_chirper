@@ -28,8 +28,8 @@ För att installera Node.js och Npm gå till denna länk:
 
 ### VS Code eller valfritt kommandoverktyg
 - Klona repositoriet till en map på din lokala dator.
-- Gå till \meddelandecentralen_chirper\Chirper\Chirper\ClientApp.
+- Gå till mappen \meddelandecentralen_chirper\Chirper\Chirper\ClientApp.
 - Ange kommandot ```npm ci```. Detta skapar en mapp som heter node_modules.
-- Gå till \meddelandecentralen_chirper\Chirper\Chirper\
+- Gå till mappen \meddelandecentralen_chirper\Chirper\Chirper\
 - Ange kommandot ```dotnet run chirper```
-- Öppna den adress som visas i komndoverktyget i en webbläsare.
+- Öppna den adress som visas i kommandoverktyget i en webbläsare.
