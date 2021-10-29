@@ -116,8 +116,8 @@ export class Chirp extends Component {
                     <p className="card-text text-info">|<Link to={`/pipetag/${this.props.pipeTag}`}>{this.props.pipeTag}</Link></p>
                 </div>
                 <div className="card-footer text-muted lead">
-                    <span className="badge badge-pill badge-secondary mr-4 chirpButtons" onClick={(() => this.handleEditActiveClick())}>Edit</span>
-                    <span className="badge badge-pill badge-danger chirpButtons" onClick={(() => this.handleDeleteClick(this.props.id))}>Delete</span>
+                    <span className="badge badge-pill badge-secondary mr-4 chirpButtons" onClick={(() => this.handleEditActiveClick())}>Ändra</span>
+                    <span className="badge badge-pill badge-danger chirpButtons" onClick={(() => this.handleDeleteClick(this.props.id))}>Ta Bort</span>
                 </div>
 
                 {editForm}
