@@ -1,4 +1,4 @@
-using Chirper.Data.Repositories;
+ï»¿using Chirper.Data.Repositories;
 using Chirper.Entities;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -19,7 +19,7 @@ namespace Chirper
                 {
                     Id = 1,
                     UserName = "Kalle",
-                    Message = "Polskötaren kommer imorgon. Behöver bli insläppt",
+                    Message = "PolskÃ¶taren kommer imorgon. BehÃ¶ver bli inslÃ¤ppt",
                     Time = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
                     PipeTag = "Polen",
                 },
@@ -27,7 +27,7 @@ namespace Chirper
                 {
                     Id = 2,
                     UserName = "Kalle",
-                    Message = "Rena handukar behöver fyllas på i förådet.",
+                    Message = "Rena handukar behÃ¶ver fyllas pÃ¥ i fÃ¶rÃ¥det.",
                     Time = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
                     PipeTag = "Polen",
                 },
@@ -35,7 +35,7 @@ namespace Chirper
                 {
                     Id = 3,
                     UserName = "Bertil",
-                    Message = "Beställ mer juice.",
+                    Message = "BestÃ¤ll mer juice.",
                     Time = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
                     PipeTag = "Baren",
                 },                
