@@ -19,25 +19,17 @@ namespace Chirper
                 {
                     Id = 1,
                     UserName = "Kalle",
-                    Message = "Polskötaren kommer imorgon. Behöver bli insläppt",
+                    Message = "Fint väder idag!! 😎",
                     Time = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
-                    PipeTag = "Polen",
+                    PipeTag = "Allmänt",
                 },
                 new Chirp
                 {
                     Id = 2,
-                    UserName = "Kalle",
-                    Message = "Rena handukar behöver fyllas på i förådet.",
-                    Time = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
-                    PipeTag = "Polen",
-                },
-                new Chirp
-                {
-                    Id = 3,
                     UserName = "Bertil",
-                    Message = "Beställ mer juice.",
+                    Message = "Ja, verkligen! 👍",
                     Time = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
-                    PipeTag = "Baren",
+                    PipeTag = "Allmänt",
                 },                
             };
         public static void Main(string[] args)
