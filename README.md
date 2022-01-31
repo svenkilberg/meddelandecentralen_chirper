@@ -1,7 +1,8 @@
 # Chirper  
 
-Detta är en applikation som använder SignalR i React för att  
+Detta är en applikation som använder SignalR för att  
 se till att alla klienter uppdateras samtidigt vid förändringar.  
+Front end är byggt med React och back end är ASP.NET Core med SignalR Hub.  
 
 Applikationen heter Chirper.  
 Användarna kan skapa små medelanden, chirps, i applikationen.  
