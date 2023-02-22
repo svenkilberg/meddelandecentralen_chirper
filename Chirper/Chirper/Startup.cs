@@ -1,3 +1,4 @@
+using Chirper.Data.Context;
 using Chirper.Data.Repositories;
 using Chirper.Hubs;
 using Microsoft.AspNetCore.Builder;
@@ -23,6 +24,8 @@ namespace Chirper
         {            
             services.AddScoped<IChirpRepository, ChirpRepository>();
 
+            services.AddScoped<ChirpContext, ChirpContext>();
+
             services.AddSignalR();
 
             services.AddControllersWithViews();
@@ -38,7 +41,7 @@ namespace Chirper
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ChirpContext context)
         {
             if (env.IsDevelopment())
             {
@@ -48,6 +51,9 @@ namespace Chirper
             {
                 app.UseExceptionHandler("/Error");
             }
+
+            // Load the default chirps records in the database.
+            context.Seed();
 
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
