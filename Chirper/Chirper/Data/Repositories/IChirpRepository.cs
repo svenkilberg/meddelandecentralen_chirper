@@ -10,10 +10,10 @@ namespace Chirper.Data.Repositories
     {
         public List<Chirp> GetAllChirps();
 
-        public void CreateNewChirp(string userName, string message, string pipeTag);
+        public void CreateNewChirp(Chirp chirp);
 
         public void DeleteChirp(int id);
 
-        public void EditChirp(int id, string userName, string message, string pipeTag);
+        public void EditChirp(Chirp chirp);
     }
 }

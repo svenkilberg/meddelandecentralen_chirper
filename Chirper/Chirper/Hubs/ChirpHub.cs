@@ -27,7 +27,15 @@ namespace Chirper.Hubs
         public async Task CreateNewChirp(string userName, string message, string pipeTag)
         {
             Console.WriteLine("In CreateNewChirp hub");
-            _chirpRepository.CreateNewChirp(userName, message, pipeTag);
+            // TODO: Change this to an object direct from the API endpoint
+            var chirp = new Chirp
+            {
+                UserName = userName,
+                Message = message,
+                PipeTag = pipeTag
+            };
+
+            _chirpRepository.CreateNewChirp(chirp);
 
             await SendMessage();
         }
@@ -43,7 +51,16 @@ namespace Chirper.Hubs
         public async Task EditChirp(int id, string userName, string message, string pipeTag)
         {
             Console.WriteLine("In EditChirp hub " + id);
-            _chirpRepository.EditChirp(id, userName, message, pipeTag);
+            // TODO: Change this to an object direct from the API endpoint
+            var chirp = new Chirp
+            {
+                Id = id,
+                UserName = userName,
+                Message = message,
+                PipeTag = pipeTag
+            };
+
+            _chirpRepository.EditChirp(chirp);
 
             await SendMessage();
         }
