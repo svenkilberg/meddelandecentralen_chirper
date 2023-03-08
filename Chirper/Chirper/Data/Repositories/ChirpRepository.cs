@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Chirper.Data.Repositories
 {
@@ -15,9 +16,9 @@ namespace Chirper.Data.Repositories
         {
             _chirpContext = chirpContext;
         }
-        public List<Chirp> GetAllChirps()
+        public async Task<List<Chirp>> GetAllChirpsAsync()
         {
-            return _chirpContext.Chirps.ToList();
+            return await _chirpContext.Chirps.ToListAsync();
         }
 
         

@@ -21,7 +21,7 @@ namespace Chirper.Hubs
             //var allChirps = _chirpRepository.AllChirps;
             //var allChirps = "Test message";
 
-            await Clients.All.SendAsync("RecieveAllChirps", _chirpRepository.GetAllChirps());
+            await Clients.All.SendAsync("RecieveAllChirps", await _chirpRepository.GetAllChirpsAsync());
         }
 
         public async Task CreateNewChirp(string userName, string message, string pipeTag)

@@ -26,7 +26,10 @@ namespace Chirper
 
             services.AddScoped<ChirpContext, ChirpContext>();
 
-            services.AddSignalR();
+            services.AddSignalR(o =>
+            {
+                o.EnableDetailedErrors = true;
+            });
 
             services.AddControllersWithViews();
 
