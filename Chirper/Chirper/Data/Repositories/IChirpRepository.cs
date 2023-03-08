@@ -8,12 +8,12 @@ namespace Chirper.Data.Repositories
 {
     public interface IChirpRepository
     {
-        public Task<List<Chirp>> GetAllChirpsAsync();
+        Task<List<Chirp>> GetAllChirpsAsync();
 
-        public void CreateNewChirp(Chirp chirp);
+        Task CreateNewChirpAsync(Chirp chirp);
 
-        public void DeleteChirp(int id);
+        void DeleteChirp(int id);
 
-        public void EditChirp(Chirp chirp);
+        void EditChirp(Chirp chirp);
     }
 }

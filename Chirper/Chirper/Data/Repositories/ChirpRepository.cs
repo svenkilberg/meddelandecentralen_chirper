@@ -23,13 +23,13 @@ namespace Chirper.Data.Repositories
 
         
 
-        public void CreateNewChirp(Chirp chirp)
+        public async Task CreateNewChirpAsync(Chirp chirp)
         {
 
             try
             {
-                _chirpContext.Chirps.Add(chirp);
-                _chirpContext.SaveChanges();
+                await _chirpContext.Chirps.AddAsync(chirp);
+                await _chirpContext.SaveChangesAsync();
             }
             catch (Exception e)
             {
