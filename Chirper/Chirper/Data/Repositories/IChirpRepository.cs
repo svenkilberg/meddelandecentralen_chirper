@@ -12,7 +12,7 @@ namespace Chirper.Data.Repositories
 
         Task CreateNewChirpAsync(Chirp chirp);
 
-        void DeleteChirp(int id);
+        Task DeleteChirpAsync(int id);
 
         void EditChirp(Chirp chirp);
     }

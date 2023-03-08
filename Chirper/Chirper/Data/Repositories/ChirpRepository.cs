@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 
 namespace Chirper.Data.Repositories
@@ -40,13 +41,13 @@ namespace Chirper.Data.Repositories
             
         }
 
-        public void DeleteChirp(int id)
+        public async Task DeleteChirpAsync(int id)
         {
-            var chirp = _chirpContext.Chirps.FirstOrDefault(s => s.Id == id);
+            var chirp = await _chirpContext.Chirps.FirstOrDefaultAsync(s => s.Id == id);
             if (chirp != null)
             {
                 _chirpContext.Chirps.Remove(chirp);
-                _chirpContext.SaveChanges();
+                await _chirpContext.SaveChangesAsync();
             }
         }
 
