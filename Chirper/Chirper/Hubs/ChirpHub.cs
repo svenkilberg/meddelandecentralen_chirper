@@ -60,7 +60,7 @@ namespace Chirper.Hubs
                 PipeTag = pipeTag
             };
 
-            _chirpRepository.EditChirp(chirp);
+            await _chirpRepository.EditChirpAsync(chirp);
 
             await SendMessage();
         }

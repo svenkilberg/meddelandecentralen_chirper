@@ -51,10 +51,10 @@ namespace Chirper.Data.Repositories
             }
         }
 
-        public void EditChirp(Chirp chirp)
+        public async Task EditChirpAsync(Chirp chirp)
         {
             _chirpContext.Entry(chirp).State = EntityState.Modified;
-            _chirpContext.SaveChanges();
+            await _chirpContext.SaveChangesAsync();
         }
     }
 }

@@ -60,9 +60,9 @@ export class Home extends Component {
     render() {
         const chirpsList = this.state.chirps;
 
-        //const chirpsListReverted = chirpsList.reverse();
+        const chirpsListReverted = chirpsList.reverse();
 
-        const renderChirp = chirpsList.map((chirp) => (
+        const renderChirp = chirpsListReverted.map((chirp) => (
             <Chirp
                 key={chirp.id}
                 id={chirp.id}
