@@ -11,9 +11,9 @@ namespace Chirper.Data.Repositories
 {
     public class ChirpRepository : IChirpRepository
     {
-        private readonly ChirpContext _chirpContext;
+        private readonly ChirpDbContext _chirpContext;
 
-        public ChirpRepository(ChirpContext chirpContext)
+        public ChirpRepository(ChirpDbContext chirpContext)
         {
             _chirpContext = chirpContext;
         }

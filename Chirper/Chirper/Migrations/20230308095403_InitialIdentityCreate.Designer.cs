@@ -3,14 +3,16 @@ using System;
 using Chirper.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Chirper.Migrations
 {
     [DbContext(typeof(ChirpDbContext))]
-    partial class ChirpContextModelSnapshot : ModelSnapshot
+    [Migration("20230308095403_InitialIdentityCreate")]
+    partial class InitialIdentityCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

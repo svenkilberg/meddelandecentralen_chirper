@@ -6,7 +6,7 @@ namespace Chirper.Data.Context
 {
     public static class InitialData
     {
-        public static void Seed(this ChirpContext dbContext)
+        public static void Seed(this ChirpDbContext dbContext)
         {
             if (!dbContext.Chirps.Any())
             {

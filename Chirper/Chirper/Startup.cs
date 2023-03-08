@@ -3,10 +3,14 @@ using Chirper.Data.Repositories;
 using Chirper.Hubs;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Options;
 
 namespace Chirper
 {
@@ -22,9 +26,25 @@ namespace Chirper
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {            
-            services.AddScoped<IChirpRepository, ChirpRepository>();
+            services.AddScoped<IChirpRepository, ChirpRepository>();            
 
-            services.AddScoped<ChirpContext, ChirpContext>();
+            services.AddDbContextPool<ChirpDbContext>(options =>
+            {
+                var connetionString = Configuration.GetConnectionString("WebApiDatabase");
+                options.UseMySql(connetionString, ServerVersion.AutoDetect(connetionString));
+            });
+
+            services.AddIdentity<IdentityUser, IdentityRole>(
+                options => {
+                    options.SignIn.RequireConfirmedAccount = false;
+                    options.Password.RequireDigit = false;
+                    options.Password.RequiredLength = 2;
+                    options.Password.RequireNonAlphanumeric = false;
+                    options.Password.RequireUppercase = false;
+                    options.Password.RequireLowercase = false;
+                }
+            )
+            .AddEntityFrameworkStores<ChirpDbContext>();
 
             services.AddSignalR(o =>
             {
@@ -44,7 +64,7 @@ namespace Chirper
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ChirpContext context)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ChirpDbContext context)
         {
             if (env.IsDevelopment())
             {
