@@ -37,6 +37,7 @@ namespace Chirper
             services.AddIdentity<IdentityUser, IdentityRole>(
                 options => {
                     options.SignIn.RequireConfirmedAccount = false;
+                    options.User.RequireUniqueEmail = true;
                     options.Password.RequireDigit = false;
                     options.Password.RequiredLength = 2;
                     options.Password.RequireNonAlphanumeric = false;
@@ -45,6 +46,9 @@ namespace Chirper
                 }
             )
             .AddEntityFrameworkStores<ChirpDbContext>();
+
+            //TODO: Have DI depend on interface ITokenCreationService intsead.
+            services.AddScoped<Services.JwtService>();
 
             services.AddSignalR(o =>
             {
