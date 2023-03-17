@@ -19,7 +19,7 @@ export class Home extends Component {
         this.deleteChirp = this.deleteChirp.bind(this);
         this.editChirp = this.editChirp.bind(this);
         
-    }    
+    }
 
     componentDidMount = () => {        
 
